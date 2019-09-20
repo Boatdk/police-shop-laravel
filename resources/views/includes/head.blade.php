@@ -8,7 +8,7 @@
 <title>Police equipment shop</title>
 
 <!-- Favicon  -->
-<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="icon" href="{{asset('img/shop-img/logo-web.png')}}">
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="{{ asset('css/core-style.css')}}">

@@ -23,7 +23,7 @@
 <!-- Bootstrap js -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- Plugins js -->
-<script src="{{asset('js/plugins.js')}}"></script>
+{{-- <script src="{{asset('js/plugins.js')}}"></script> --}}
 <!-- Classy Nav js -->
 <script src="{{asset('js/classy-nav.min.js')}}"></script>
 <!-- Active js -->

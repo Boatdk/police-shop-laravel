@@ -11,8 +11,14 @@ use DB;
 
 class loginController extends BaseController
 {
-    public function index(){
-      return view('pages.login');
+    public function index(Request $req){
+      $userLogin = $req->session()->get('user');
+      if($userLogin){
+        return redirect()->action('homeController@index');
+      }else{
+        return view('pages.login');
+      }
+      
     }
 
     public function login(Request $req){
@@ -21,6 +27,8 @@ class loginController extends BaseController
       $checkLogin = DB::table('user')->where(['email'=>$username, 'password' => $password])->get();
       if(count($checkLogin) > 0){
         $req->session()->put('user', $username);
+        $req->session()->put('role', $checkLogin[0]->role);
+        $req->session()->put('firstname', $checkLogin[0]->first_name);
         $userLogin = $req->session()->get('user');
         return redirect()->action('homeController@index', [$userLogin]);
       }
@@ -29,8 +37,9 @@ class loginController extends BaseController
       }
     }
 
-    public function logou(Request $req){
+    public function logout(Request $req){
       $req->session()->flush();
+      return redirect()->action('homeController@index');
     }
 
 }

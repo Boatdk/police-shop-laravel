@@ -8,21 +8,22 @@
 
         <!-- Single Product Thumb -->
         <div class="single_product_thumb clearfix">
-            <div class="product_thumbnail_slides owl-carousel">
-                <img src="img/product-img/product-big-1.jpg" alt="">
+                <img src="{{$product->image}}" alt="">
+            {{-- <div class="product_thumbnail_slides owl-carousel">
+                
                 <img src="img/product-img/product-big-2.jpg" alt="">
                 <img src="img/product-img/product-big-3.jpg" alt="">
-            </div>
+            </div> --}}
         </div>
 
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix">
-            <span>mango</span>
+            <span>{{$product->brand}}</span>
             <a href="cart.html">
-                <h2>One Shoulder Glitter Midi Dress</h2>
+                <h2>{{$product->name}}</h2>
             </a>
-            <p class="product-price"><span class="old-price">$65.00</span> $49.00</p>
-            <p class="product-desc">Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
+            <p class="product-price">{{$product->price}} บาท</p>
+            <p class="product-desc"></p>
 
             <!-- Form -->
             <form class="cart-form clearfix" method="post">
@@ -44,7 +45,7 @@
                 <!-- Cart & Favourite Box -->
                 <div class="cart-fav-box d-flex align-items-center">
                     <!-- Cart -->
-                    <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                    <button type="submit" name="addtocart" value="5" class="btn essence-btn">หยิบใส่ตะกร้า</button>
                     <!-- Favourite -->
                     <div class="product-favourite ml-4">
                         <a href="#" class="favme fa fa-heart"></a>
