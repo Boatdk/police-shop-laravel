@@ -2,18 +2,108 @@
 @section('content')
 
 @include('includes.cart')
+<script>
+  function alertss(){
+    confirm('test');
+  }
+
+  function getDatafromTable(code){
+    var code = code;
+    console.log(code);
+    $.ajax({
+      url: 'http://localhost:8000/getData/'+code,
+      success: function(data){
+        $('input[name="pd_code"]').val(data[0].code);
+        $('input[name="pd_name"]').val(data[0].name);
+        $('#pd_type').val(data[0].type);
+        $('#pd_color').val(data[0].color);
+        $('input[name="pd_size"]').val(data[0].size);
+        $('input[name="pd_brand"]').val(data[0].brand);
+        $('input[name="pd_volume"]').val(data[0].volume);
+        $('input[name="pd_price"]').val(data[0].price);
+      }
+    })
+  }
+
+  function editProduct(){
+    if(confirm('ยืนยันที่จะแก้ไขข้อมูล')){
+      var pd_code = $('input[name="pd_code"]').val();
+      var pd_name = $('input[name="pd_name"]').val();
+      var pd_type = $('#pd_type').val();
+      var pd_color = $('#pd_color').val();
+      var pd_brand = $('input[name="pd_brand"]').val();
+      var pd_size = $('input[name="pd_size"]').val();
+      var pd_volume = $('input[name="pd_volume"]').val();
+      var pd_price = $('input[name="pd_price"]').val();
+      
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: 'http://localhost:8000/editProduct/',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          code: pd_code,
+          name: pd_name,
+          type: pd_type,
+          color: pd_color,
+          volume: pd_volume,
+          price: pd_price,
+          brand: pd_brand,
+          size: pd_size
+        },
+        success: function(data, dataType, state){
+          console.log(data)
+          if(data == 1){
+            alert("แก้ไขข้อมูลเสร็จสิ้น!!");
+            window.location.href = '';
+          }else{
+            alert('ไม่สามารถแก้ไขข้อมูลได้')
+          }
+          
+        }
+
+      })
+    }
+  }
+
+  function deleteProduct(code){
+    if(confirm('ยืนยันที่จะลบสินค้าชิ้นนี้')){
+      var pd_code = code
+
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: 'http://localhost:8000/deleteProduct/',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          code: pd_code
+        },
+        success: function(data, dataType, state){
+          if(data == 1){
+            alert('ลบสำเร็จ!!')
+            window.location.href = '';
+          }else{
+            alert('ลบผิดพลาด')
+          }
+        }
+      })
+    }
+
+  }
+  
+</script>
 <div class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table100">
-                <table>
+                <table id="product_table">
                     <thead>
                         <tr class="table100-head">
                             <th class="column1">รหัสสินค้า</th>
                             <th class="column2">ชื่อสินค้า</th>
                             <th class="column3">ประเภท</th>
-                            <th class="column2">ไซส์</th>
-                            <th class="column4">ราคา</th>
+                            <th class="column3">ไซส์</th>
+                            <th class="column3">ราคา</th>
                             <th class="column5">จำนวน</th>
                             <th class="column6">จัดการ</th>
                         </tr>
@@ -21,7 +111,7 @@
                     <tbody>
                         @foreach($product as $products)
                         <tr>
-                            <td class="column1">{{$products->code}}</td>
+                            <td class="column1"><b>{{$products->code}}</b></td>
                             <td class="column2">{{$products->name}}</td>
                             @if($products->type == 1)
                             <td class="column3">เสื้อ</td>
@@ -32,12 +122,21 @@
                             @elseif($products->type == 4)
                             <td class="column3">อุปกรณ์</td>
                             @endif
-                            <td class="column2">{{$products->size}}</td>
-                            <td class="column4">{{$products->price}}</td>
+                            <td class="column3">{{$products->size}}</td>
+                            <td class="column3">{{$products->price}} บาท</td>
                             <td class="column5">{{$products->volume}}</td>
                             <td class="column6">
-                              <button class="btn btn-sm btn-primary">แก้ไข</button>
-                              <button class="btn btn-sm btn-danger">ลบ</button>
+                                <div class="row">
+                                    <div class="col-6">
+                                            <button class="btn btn-sm btn-primary edit-data" data-toggle="modal"
+                                                data-target="#edit_product" onclick="getDatafromTable('{{$products->code}}');" data-id="{{$products->code}}">แก้ไข</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-sm btn-danger" onclick="deleteProduct('{{$products->code}}');">ลบ</button>
+                                    </div>
+                                </div>
+
+
                             </td>
                         </tr>
                         @endforeach
@@ -46,6 +145,97 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="edit_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    แก้ไขข้อมูลสินค้า
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- form start -->
+                <form role="form">
+                    {{ csrf_field() }}
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">รหัส</label>
+                              <input type="text" class="form-control" name="pd_code" placeholder="จำนวนโบนัส"
+                                   disabled>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                              <label for="exampleInputPassword1">ชื่อ</label>
+                              <input type="text" class="form-control" name="pd_name" placeholder="จำนวนโบนัส"
+                                  >
+                      </div>
+                      <div class="col-md-6 mt-2">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">ประเภท</label>
+                              <select name="pd_type" id="pd_type">
+                                  <option value="0">กรุณาเลือกประเภท
+                                  </option>
+                                  <option value="1">เสื้อ</option>
+                                  <option value="2">กางเกง</option>
+                                  <option value="3">รองเท้า</option>
+                                  <option value="4">อุปกรณ์</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6 mt-2">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">สี</label>
+                              <select name="pd_color" id="pd_color">
+                                  <option value="0">กรุณาเลือกสี</option>
+                                  <option value="1">ดำ</option>
+                                  <option value="2">กรม</option>
+                                  <option value="3">ทราย</option>
+                                  <option value="4">เขียว</option>
+                                  <option value="5">เทา</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">แบรนด์</label>
+                              <input type="text" class="form-control" name="pd_brand">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">ไซส์</label>
+                              <input type="text" class="form-control" name="pd_size">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">จำนวน</label>
+                              <input type="text" class="form-control" name="pd_volume">
+                          </div>
+                      </div> 
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">ราคา</label>
+                              <input type="text" class="form-control" name="pd_price">
+                          </div>
+                      </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="editProduct();">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 

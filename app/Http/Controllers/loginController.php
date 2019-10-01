@@ -24,7 +24,8 @@ class loginController extends BaseController
     public function login(Request $req){
       $username = $req->input('username');
       $password = $req->input('password');
-      $checkLogin = DB::table('user')->where(['email'=>$username, 'password' => $password])->get();
+      $psw = md5($password);
+      $checkLogin = DB::table('user')->where(['email'=>$username, 'password' => $psw])->get();
       if(count($checkLogin) > 0){
         $req->session()->put('user', $username);
         $req->session()->put('role', $checkLogin[0]->role);
@@ -41,5 +42,24 @@ class loginController extends BaseController
       $req->session()->flush();
       return redirect()->action('homeController@index');
     }
+
+    public function register(Request $req){
+      $first_name = $req->input('firstname');
+      $last_name = $req->input('lastname');
+      $tel = $req->input('tel');
+      $email = $req->input('email');
+      $password = $req->input('password');
+      $user_code = $this->generate_code();
+      $register = DB::table('user')->insert([
+        'user_code' => $user_code,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'tel' => $tel,
+        'email' => $email,
+        'password' => md5($password),
+        'plain_password' => $password
+      ]);
+    }
+
 
 }

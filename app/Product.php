@@ -19,6 +19,16 @@ class Product extends Model {
     $query = DB::table('products')->where('type', $type)->get();
     return $query;
   }
+  
+  public static function deleteProduct($code){
+    $query = DB::table('products')->where('code', $code)->delete();
+    return $query;
+  }
+
+  public static function updateProduct($code, $name, $type, $color, $size, $brand, $volume, $price){
+    $query = DB::table('products')->where('code', $code)->update(['name' => $name, 'type'=> $type, 'color'=> $color, 'size'=>$size, 'brand'=>$brand, 'volume'=>$volume, 'price'=>$price ]);
+    return $query;
+  }
 
 
 

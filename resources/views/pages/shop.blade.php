@@ -4,7 +4,7 @@
 <!-- ##### Right Side Cart End ##### -->
 
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
+<div class="breadcumb_area bg-img">
     <div class="container h-100 bg-product">
         <div class="row h-100 align-items-center">
             <div class="col-12">

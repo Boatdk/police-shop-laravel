@@ -183,7 +183,7 @@ tbody tr:nth-child(even) {
 tbody tr {
   font-family: OpenSans-Regular;
   font-size: 15px;
-  color: #808080;
+  color: black;
   line-height: 1.2;
   font-weight: unset;
 }
@@ -195,16 +195,16 @@ tbody tr:hover {
 }
 
 .column1 {
-  width: 260px;
+  width: 150px;
   padding-left: 40px;
 }
 
 .column2 {
-  width: 160px;
+  width: 250px;
 }
 
 .column3 {
-  width: 245px;
+  width: 150px;
 }
 
 .column4 {
@@ -213,13 +213,13 @@ tbody tr:hover {
 }
 
 .column5 {
-  width: 170px;
-  text-align: right;
+  width: 100px;
+  text-align: center;
 }
 
 .column6 {
   width: 222px;
-  text-align: right;
+  text-align: center;
   padding-right: 62px;
 }
 

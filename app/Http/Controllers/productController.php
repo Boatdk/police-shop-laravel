@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use DB;
+use App\Product;
 
 class productController extends BaseController
 {
@@ -18,7 +19,7 @@ class productController extends BaseController
 
     function createRandomCode($data) { 
 
-        $date = Date("d/m/Y");
+        $date = Date("d/m/Y h:i:sa");
         $hash = md5($data.$date);
         $code = substr($hash, 22);
   
@@ -62,5 +63,26 @@ class productController extends BaseController
       }else{
         return '<script>alert("FAIL");</script>';
       }
+    }
+
+    function deleteProduct(Request $req){
+      $code = $_REQUEST['code'];
+      $delete = Product::deleteProduct($code);
+      return $delete;
+      
+    }
+
+    function editProduct(Request $req){
+      $code = $_REQUEST['code'];
+      $name = $_REQUEST['name'];
+      $type = $_REQUEST['type'];
+      $color = $_REQUEST['color'];
+      $brand = $_REQUEST['brand'];
+      $size = $_REQUEST['size'];
+      $volume = $_REQUEST['volume'];
+      $price = $_REQUEST['price'];
+
+      $update = Product::updateProduct($code, $name, $type, $color, $size, $brand, $volume, $price);
+      return $update;
     }
 }

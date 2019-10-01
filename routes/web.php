@@ -21,8 +21,14 @@ Route::get('/shop/{type}', ['uses' => 'shopController@index', 'as' => 'type']);
 // Route::post('/image-upload', 'productController@addImage')->name('image.upload.post');
 Route::get('/contact', 'contactController@index');
 Route::get('/manage', 'manageController@index');
+Route::get('/err', 'errController@index');
+Route::get('/getData/{data}', 'productDetailController@getData');
 
 
 Route::post('/login', 'loginController@login');
 Route::get('/logout', 'loginController@logout');
 Route::post('/addProduct', 'productController@addProduct');
+Route::get('/register', 'registerController@index');
+Route::post('/register', 'registerController@register');
+Route::post('/deleteProduct', 'productController@deleteProduct');
+Route::post('/editProduct', 'productController@editProduct');

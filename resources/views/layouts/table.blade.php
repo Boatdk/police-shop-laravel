@@ -2,6 +2,7 @@
 <html>
 <head>
     @include('includes.headv2')
+    @include('includes.head')
 </head>
 <body>
 

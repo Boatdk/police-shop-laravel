@@ -2,7 +2,7 @@
     <!-- Classy Menu -->
     <nav class="classy-navbar" id="essenceNav">
         <!-- Logo -->
-        <a class="nav-brand" href="<?php echo url('/');?>"><img src="{{asset('img/shop-img/logo-web.png')}}" alt="" width="120px" height="50px"></a>
+        <a class="nav-brand" href="<?php echo url('/');?>"><img src="{{asset('img/shop-img/logo-web.png')}}" alt="" width="180px" height="40px"></a>
         <!-- Navbar Toggler -->
         <div class="classy-navbar-toggler">
             <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -111,7 +111,7 @@
         </div>
         <!-- Cart Area -->
         <div class="cart-area">
-            <a href="#" id="essenceCartBtn"><img src="{{asset('img/core-img/bag.svg')}}" alt=""> <span>3</span></a>
+            <a href="#" id="essenceCartBtn"><img src="{{asset('img/core-img/bag.svg')}}" alt=""> <span></span></a>
         </div>
     </div>
   

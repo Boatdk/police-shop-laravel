@@ -1133,6 +1133,7 @@ img {
 
 /* :: 12.0 Breadcumb Area CSS */
 .breadcumb_area {
+  background-image: url('http://localhost:8888/police-shop/police-shop/public/img/bg-img/breadcumb.jpg');
   position: relative;
   z-index: 1;
   width: 100%;

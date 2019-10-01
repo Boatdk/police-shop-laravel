@@ -4,27 +4,20 @@
 <div class="container blank">
     <div class="wrapper fadeInDown">
             <div id="formContent">
-              <!-- Tabs Titles -->
-          
-              <!-- Icon -->
               <div class="fadeIn first">
-                <h4>เข้าสู่ระบบ</h4>
+                <h4>สมัครสมาชิก</h4>
               </div>
-          
               <!-- Login Form -->
-              <form action="/login" method="post"> 
-                    {{csrf_field()}}
-                <input type="text" id="login" class="fadeIn second" name="username" placeholder="อีเมลล์">
-                <input type="password" id="password" class="fadeIn third" name="password" placeholder="รหัสผ่าน">
-                <input type="submit" class="fadeIn fourth" value="ลงชื่อเข้าใช้">
+              <form action="/register" method="post"> 
+                {{csrf_field()}}
+                <input type="text" id="login" class="fadeIn second" name="firstname" placeholder="ชื่อจริง" required>
+                <input type="text" id="login" class="fadeIn third" name="lastname" placeholder="นามสกุล" required>
+                <input type="text" id="login" class="fadeIn third" name="tel" placeholder="เบอร์โทรศัพท์" required>
+                <input type="text" id="login" class="fadeIn third" name="email" placeholder="อีเมลล์" required>
+                <input type="password" id="password" class="fadeIn second" name="password" placeholder="รหัสผ่าน" required>
+                
+                <input type="submit" class="fadeIn fourth" value="สมัครสมาชิก">
               </form>
-          
-              <!-- Remind Passowrd -->
-              <div id="formFooter">
-                <a class="underlineHover" href="/register">สมัครสมาชิก</a>
-                {{-- <a class="underlineHover" href="#">Forgot Password?</a> --}}
-              </div>
-          
             </div>
           </div>
 </div>

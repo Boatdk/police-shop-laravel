@@ -1,5 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="{{asset('table/vendor/bootstrap/css/bootstrap.min.css')}}">
 
 <link rel="stylesheet" type="text/css" href="{{asset('table/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
@@ -19,4 +21,4 @@
 
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="{{ asset('css/core-style.css')}}">
-<link rel="stylesheet" href="{{asset('style.css')}}">
+<link rel="stylesheet" href="{{ asset('style.css')}} ">

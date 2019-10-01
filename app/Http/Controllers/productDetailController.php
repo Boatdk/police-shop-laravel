@@ -20,4 +20,13 @@ class productDetailController extends BaseController{
     return view('pages.product_detail')->with('product', $product[0]);
   }
 
+  public function getData(Request $req){
+    $url = url()->full();
+    // print_r($url);
+    $type = substr($url, 30);
+    $code_product = $type;
+    $product = Product::getProductFromCode($code_product);
+    return $product;
+  }
+
 }
