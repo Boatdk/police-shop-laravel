@@ -31,30 +31,30 @@
                         <div class="megamenu">
                             <ul class="single-mega cn-col-5">
                                 <li class="title">เสื้อ</li>
-                                <li><a href="/shop">เสื้อเกราะ</a></li>
-                                <li><a href="/shop">ชุดเวส</a></li>
+                                <li><a href="{{ route('type', ['type' => "shirt"]) }}">เสื้อเกราะ</a></li>
+                                <li><a href="{{ route('type', ['type' => "shirt"]) }}">ชุดเวส</a></li>
                                 {{-- <li><a href="/shop">T-shirts</a></li>
                                 <li><a href="/shop">Rompers</a></li>
                                 <li><a href="/shop">Bras &amp; Panties</a></li> --}}
                             </ul>
                             <ul class="single-mega cn-col-5">
                                 <li class="title">กางเกง</li>
-                                <li><a href="/shop">กางเกงขายาว</a></li>
-                                <li><a href="/shop">กางเกงขาสั้น</a></li>
+                                <li><a href="{{ route('type', ['type' => "pants"]) }}">กางเกงขายาว</a></li>
+                                <li><a href="{{ route('type', ['type' => "pants"]) }}">กางเกงขาสั้น</a></li>
                             </ul>
                             <ul class="single-mega cn-col-5">
                                 <li class="title">รองเท้า</li>
-                                <li><a href="/shop">รองเท้าฮาฟ</a></li>
-                                <li><a href="/shop">รองเท้าคัชชู</a></li>
-                                <li><a href="/shop">รองเท้าคอมแบ็ต</a></li>
-                                <li><a href="/shop">รองเท้าแทคติคอล</a></li>
-                                <li><a href="/shop">รองเท้าเดลต้า</a></li>
-                                <li><a href="/shop">รองเท้า 5.11</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้าฮาฟ</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้าคัชชู</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้าคอมแบ็ต</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้าแทคติคอล</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้าเดลต้า</a></li>
+                                <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้า 5.11</a></li>
                             </ul>
                             <ul class="single-mega cn-col-5">
                                 <li class="title">กระเป๋า</li>
-                                <li><a href="/shop">เป้หลัง</a></li>
-                                <li><a href="/shop">สะพายไหล่ คาดเอว รัด หิ้ว</a></li>
+                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">เป้หลัง</a></li>
+                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">สะพายไหล่ คาดเอว รัด หิ้ว</a></li>
                             </ul>
                         </div>
                     </li>

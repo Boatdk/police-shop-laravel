@@ -38,10 +38,18 @@ class registerController extends BaseController
       $address = 'default';
       $role = 'customer';
       $user_code = $this->generate_code();
-      $check_user = DB::table('user')->where(['email' => $email])->get();
-      if(count($check_user) > 0){
+      $check_user_email = DB::table('user')->where(['email' => $email])->get();
+      $check_user_tel = DB::table('user')->where(['tel' => $tel])->get();
+      if(count($check_user_email) > 0){
         $msg['err'] = "อีเมลล์ถูกใช้งานแล้ว";
-        return view('err')->with('msg', $msg['err']);
+        $msg['btn'] = 'กลับไปยังหน้าสมัครสมาชิก';
+        $msg['route'] = '/register';
+        return view('err')->with('msg', $msg);
+      }elseif(count($check_user_tel) > 0){
+        $msg['err'] = "เบอร์โทรศัพท์ถูกใช้งานแล้ว";
+        $msg['btn'] = 'กลับไปยังหน้าสมัครสมาชิก';
+        $msg['route'] = '/register';
+        return view('err')->with('msg', $msg);
       }else{
         $register = DB::table('user')->insert([
           'user_code' => $user_code,

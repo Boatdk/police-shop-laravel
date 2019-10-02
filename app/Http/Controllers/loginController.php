@@ -34,7 +34,10 @@ class loginController extends BaseController
         return redirect()->action('homeController@index', [$userLogin]);
       }
       else{
-        echo "fail";
+        $msg['err'] = 'ล็อคอินไม่สำเร็จกรุณาล็อคอินใหม่อีกครั้ง';
+        $msg['btn'] = 'กลับไปหน้าลงชื่อเข้าใช้';
+        $msg['route'] = '/login';
+        return view('err')->with('msg', $msg);
       }
     }
 
@@ -43,23 +46,6 @@ class loginController extends BaseController
       return redirect()->action('homeController@index');
     }
 
-    public function register(Request $req){
-      $first_name = $req->input('firstname');
-      $last_name = $req->input('lastname');
-      $tel = $req->input('tel');
-      $email = $req->input('email');
-      $password = $req->input('password');
-      $user_code = $this->generate_code();
-      $register = DB::table('user')->insert([
-        'user_code' => $user_code,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-        'tel' => $tel,
-        'email' => $email,
-        'password' => md5($password),
-        'plain_password' => $password
-      ]);
-    }
 
 
 }

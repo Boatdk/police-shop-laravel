@@ -19,6 +19,11 @@ class Product extends Model {
     $query = DB::table('products')->where('type', $type)->get();
     return $query;
   }
+
+  public static function getproductBrand($brand){
+    $query = DB::table('products')->where('brand', $brand)->get();
+    return $query;
+  }
   
   public static function deleteProduct($code){
     $query = DB::table('products')->where('code', $code)->delete();

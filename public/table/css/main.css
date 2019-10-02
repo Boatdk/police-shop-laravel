@@ -51,12 +51,31 @@ ul, li {
 	list-style-type: none;
 }
 
+/* .btn {
+    font-weight: 400;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    border-color: #888888;
+    color: white;
+} */
+
+.flex-column {
+  -ms-flex-direction: column!important;
+  flex-direction: column!important;
+}
+.d-flex {
+  display: -ms-flexbox!important;
+  display: flex!important;
+}
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
 
 /* ------------------------------------ */
 input {
   display: block;
 	outline: none;
-	border: none !important;
 }
 
 textarea {

@@ -12,9 +12,9 @@
 		<div class="notfound">
 			<div class="notfound-404">
 				<h1>Oops!</h1>
-				<h2>{{$msg}}</h2>
+				<h2>{{$msg['err']}}</h2>
 			</div>
-			<a href="/register">กลับไปหน้าสมัครสมาชิก</a>
+			<a href="{{$msg['route']}}">{{$msg['btn']}}</a>
 		</div>
 	</div>
 

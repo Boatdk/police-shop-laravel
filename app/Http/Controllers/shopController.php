@@ -27,6 +27,34 @@ class shopController extends BaseController{
     }elseif($type === 'accessories'){
       $filter = 4;
       $msg = 'กระเป๋า';
+    }elseif($type === 'Bogie.1' || $type === 'BOGIE.1'){
+      $filter = 5;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type === '5.11'){
+      $filter = 6;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type === 'MAGNUM' || $type === 'magnum'){
+      $filter = 7;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type == 'BANG BANG!' || $type == 'bang bang!'){
+      $filter = 8;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type === 'DELTA' || $type === 'delta'){
+      $filter = 9;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type == 'SECTOR SEVEN' || $type == 'sector seven'){
+      $filter = 10;
+      $bfilter = $type;
+      $msg = $type;
+    }elseif($type === 'TACTICAL' || $type === 'tactical'){
+      $filter = 11;
+      $bfilter = $type;
+      $msg = $type;
     }else{
       $filter = 0;
       $msg = 'สินค้าทั้งหมด';
@@ -48,6 +76,9 @@ class shopController extends BaseController{
     }elseif($filter == 4){
       $product = Product::getproductType($filter);
       $count = Product::getproductType($filter)->count();
+    }elseif($filter == 5 || $filter == 6 || $filter == 7 || $filter == 8 || $filter == 9  || $filter == 10 || $filter == 11){
+      $product = Product::getProductBrand($bfilter);
+      $count = Product::getproductBrand($bfilter)->count();
     }
     
     // print_r($product[0]->name);exit;

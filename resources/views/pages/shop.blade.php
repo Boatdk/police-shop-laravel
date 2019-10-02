@@ -150,13 +150,13 @@
                         <p class="widget-title2 mb-30">แบรนด์</p>
                         <div class="widget-desc">
                             <ul>
-                                <li><a href="#">BOGIE.1</a></li>
-                                <li><a href="#">5.11</a></li>
-                                <li><a href="#">MAGNUM</a></li>
-                                <li><a href="#">BANG BANG!</a></li>
-                                <li><a href="#">DELTA</a></li>
-                                <li><a href="#">SECTOR SEVEN</a></li>
-                                <li><a href="#">TACTICAL</a></li>
+                                <li><a href="{{ route('type', ['type' => "BOGIE.1"]) }}">BOGIE.1</a></li>
+                                <li><a href="{{ route('type', ['type' => "5.11"]) }}">5.11</a></li>
+                                <li><a href="{{ route('type', ['type' => "MAGNUM"]) }}">MAGNUM</a></li>
+                                <li><a href="{{ route('type', ['type' => "BANG BANG!"]) }}">BANG BANG!</a></li>
+                                <li><a href="{{ route('type', ['type' => "DELTA"]) }}">DELTA</a></li>
+                                <li><a href="{{ route('type', ['type' => "SECTOR SEVEN"]) }}">SECTOR SEVEN</a></li>
+                                <li><a href="{{ route('type', ['type' => "TACTICAL"]) }}">TACTICAL</a></li>
                             </ul>
                         </div>
                     </div>
