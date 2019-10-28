@@ -220,10 +220,24 @@
                                     @elseif($products->type == 3)
                                         <span>รองเท้า</span>
                                     @endif
+
                                     <a href="{{ route('name', ['name' => $products->code]) }}">
                                             <h6>{{ $products->name }}</h6>
                                     </a>
+                                    
                                     <p class="product-price">{{ $products->price }} บาท</p>
+
+                                    @if($products->color == 1)
+                                        <span>ดำ</span>
+                                    @elseif($products->color == 2)
+                                        <span>กรม</span>
+                                    @elseif($products->color == 3)
+                                        <span>ทราย</span>
+                                    @elseif($products->color == 4)
+                                        <span>เขียว</span>
+                                    @elseif($products->color == 5)
+                                        <span>เทา</span>
+                                    @endif
 
                                     <!-- Hover Content -->
                                     <div class="hover-content">

@@ -102,6 +102,7 @@
                             <th class="column1">รหัสสินค้า</th>
                             <th class="column2">ชื่อสินค้า</th>
                             <th class="column3">ประเภท</th>
+                            <th class="column3">สี</th>
                             <th class="column3">ไซส์</th>
                             <th class="column3">ราคา</th>
                             <th class="column5">จำนวน</th>
@@ -120,8 +121,21 @@
                             @elseif($products->type == 3)
                             <td class="column3">รองเท้า</td>
                             @elseif($products->type == 4)
-                            <td class="column3">อุปกรณ์</td>
+                            <td class="column3">กระเป๋า</td>
                             @endif
+
+                            @if($products->color == 1)
+                            <td class="column3">ดำ</td>
+                            @elseif($products->color == 2)
+                            <td class="column3">กรม</td>
+                            @elseif($products->color == 3)
+                            <td class="column3">ทราย</td>
+                            @elseif($products->color == 4)
+                            <td class="column3">เขียว</td>
+                            @elseif($products->color == 5)
+                            <td class="column3">เทา</td>
+                            @endif
+
                             <td class="column3">{{$products->size}}</td>
                             <td class="column3">{{$products->price}} บาท</td>
                             <td class="column5">{{$products->volume}}</td>
@@ -189,7 +203,7 @@
                                     <option value="1">เสื้อ</option>
                                     <option value="2">กางเกง</option>
                                     <option value="3">รองเท้า</option>
-                                    <option value="4">อุปกรณ์</option>
+                                    <option value="4">กระเป๋า</option>
                                 </select>
                             </div>
                         </div>

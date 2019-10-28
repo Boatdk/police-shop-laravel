@@ -27,7 +27,7 @@
                             <option value="1">เสื้อ</option>
                             <option value="2">กางเกง</option>
                             <option value="3">รองเท้า</option>
-                            <option value="4">อุปกรณ์</option>
+                            <option value="4">กระเป๋า</option>
                         </select>
                     </div>
                 </div>
