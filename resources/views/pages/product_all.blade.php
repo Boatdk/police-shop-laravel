@@ -2,96 +2,6 @@
 @section('content')
 
 @include('includes.cart')
-<script>
-    function alertss() {
-        confirm('test');
-    }
-
-    function getDatafromTable(code) {
-        var code = code;
-        console.log(code);
-        $.ajax({
-            url: 'http://localhost:8000/getData/' + code,
-            success: function (data) {
-                $('input[name="pd_code"]').val(data[0].code);
-                $('input[name="pd_name"]').val(data[0].name);
-                $('#pd_type').val(data[0].type);
-                $('#pd_color').val(data[0].color);
-                $('input[name="pd_size"]').val(data[0].size);
-                $('input[name="pd_brand"]').val(data[0].brand);
-                $('input[name="pd_volume"]').val(data[0].volume);
-                $('input[name="pd_price"]').val(data[0].price);
-            }
-        })
-    }
-
-    function editProduct() {
-        if (confirm('ยืนยันที่จะแก้ไขข้อมูล')) {
-            var pd_code = $('input[name="pd_code"]').val();
-            var pd_name = $('input[name="pd_name"]').val();
-            var pd_type = $('#pd_type').val();
-            var pd_color = $('#pd_color').val();
-            var pd_brand = $('input[name="pd_brand"]').val();
-            var pd_size = $('input[name="pd_size"]').val();
-            var pd_volume = $('input[name="pd_volume"]').val();
-            var pd_price = $('input[name="pd_price"]').val();
-
-            $.ajax({
-                type: 'post',
-                dataType: 'json',
-                url: 'http://localhost:8000/editProduct/',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    code: pd_code,
-                    name: pd_name,
-                    type: pd_type,
-                    color: pd_color,
-                    volume: pd_volume,
-                    price: pd_price,
-                    brand: pd_brand,
-                    size: pd_size
-                },
-                success: function (data, dataType, state) {
-                    console.log(data)
-                    if (data == 1) {
-                        alert("แก้ไขข้อมูลเสร็จสิ้น!!");
-                        window.location.href = '';
-                    } else {
-                        alert('ไม่สามารถแก้ไขข้อมูลได้')
-                    }
-
-                }
-
-            })
-        }
-    }
-
-    function deleteProduct(code) {
-        if (confirm('ยืนยันที่จะลบสินค้าชิ้นนี้')) {
-            var pd_code = code
-
-            $.ajax({
-                type: 'post',
-                dataType: 'json',
-                url: 'http://localhost:8000/deleteProduct/',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    code: pd_code
-                },
-                success: function (data, dataType, state) {
-                    if (data == 1) {
-                        alert('ลบสำเร็จ!!')
-                        window.location.href = '';
-                    } else {
-                        alert('ลบผิดพลาด')
-                    }
-                }
-            })
-        }
-
-    }
-
-</script>
 <div class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
@@ -140,13 +50,13 @@
                             <td class="column3">{{$products->price}} บาท</td>
                             <td class="column5">{{$products->volume}}</td>
                             <td class="column6">
-                              <div class="row" style="margin-left: 30px">
-                                  <div class="" style="margin-right: 10px">
+                              <div class="row">
+                                  <div class="col-md-5">
                                       <button class="btn bg-warning btn-sm" data-toggle="modal"
                                           data-target="#edit_product" onclick="getDatafromTable('{{$products->code}}');"
                                           data-id="{{$products->code}}"><i class="fa fa-pencil"></i> แก้ไข</button>
                                   </div>
-                                  <div class="">
+                                  <div class="col-md-6">
                                       <button class="btn btn-sm btn-danger"
                                           onclick="deleteProduct('{{$products->code}}');"><i class="fa fa-trash-o"></i> ลบ</button>
                                   </div>
@@ -262,3 +172,110 @@
 <script src="{{asset('table/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('table/vendor/select2/select2.min.js')}}"></script>
 <script src="{{asset('table/js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+		    $('#product_table').DataTable({
+		      "paging": true,
+		      "lengthChange": true,
+		      "searching": true,
+		      "ordering": false,
+		      "info": true,
+		      "autoWidth": false
+		    });
+		  });
+</script>
+
+<script>
+    function alertss() {
+        confirm('test');
+    }
+
+    function getDatafromTable(code) {
+        var code = code;
+        console.log(code);
+        $.ajax({
+            url: 'http://localhost:8000/getData/' + code,
+            success: function (data) {
+                $('input[name="pd_code"]').val(data[0].code);
+                $('input[name="pd_name"]').val(data[0].name);
+                $('#pd_type').val(data[0].type);
+                $('#pd_color').val(data[0].color);
+                $('input[name="pd_size"]').val(data[0].size);
+                $('input[name="pd_brand"]').val(data[0].brand);
+                $('input[name="pd_volume"]').val(data[0].volume);
+                $('input[name="pd_price"]').val(data[0].price);
+            }
+        })
+    }
+
+    function editProduct() {
+        if (confirm('ยืนยันที่จะแก้ไขข้อมูล')) {
+            var pd_code = $('input[name="pd_code"]').val();
+            var pd_name = $('input[name="pd_name"]').val();
+            var pd_type = $('#pd_type').val();
+            var pd_color = $('#pd_color').val();
+            var pd_brand = $('input[name="pd_brand"]').val();
+            var pd_size = $('input[name="pd_size"]').val();
+            var pd_volume = $('input[name="pd_volume"]').val();
+            var pd_price = $('input[name="pd_price"]').val();
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: 'http://localhost:8000/editProduct/',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    code: pd_code,
+                    name: pd_name,
+                    type: pd_type,
+                    color: pd_color,
+                    volume: pd_volume,
+                    price: pd_price,
+                    brand: pd_brand,
+                    size: pd_size
+                },
+                success: function (data, dataType, state) {
+                    console.log(data)
+                    if (data == 1) {
+                        alert("แก้ไขข้อมูลเสร็จสิ้น!!");
+                        window.location.href = '';
+                    } else {
+                        alert('ไม่สามารถแก้ไขข้อมูลได้')
+                    }
+
+                }
+
+            })
+        }
+    }
+
+    function deleteProduct(code) {
+        if (confirm('ยืนยันที่จะลบสินค้าชิ้นนี้')) {
+            var pd_code = code
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: 'http://localhost:8000/deleteProduct/',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    code: pd_code
+                },
+                success: function (data, dataType, state) {
+                    if (data == 1) {
+                        alert('ลบสำเร็จ!!')
+                        window.location.href = '';
+                    } else {
+                        alert('ลบผิดพลาด')
+                    }
+                }
+            })
+        }
+
+    }
+
+</script>

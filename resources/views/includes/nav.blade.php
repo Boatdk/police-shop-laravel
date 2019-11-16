@@ -20,10 +20,6 @@
                             <ul class="dropdown">
                                 <li><a href="{{url('/')}}">หน้าหลัก</a></li>
                                 <li><a href="{{url('/shop')}}">สินค้าทั้งหมด</a></li>
-                                {{-- <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="single-blog.html">Single Blog</a></li>
-                                <li><a href="regular-page.html">Regular Page</a></li> --}}
                                 <li><a href="{{url('/contact')}}">ติดต่อ</a></li>
                             </ul>
                         </li>
@@ -33,9 +29,6 @@
                                 <li class="title">เสื้อ</li>
                                 <li><a href="{{ route('type', ['type' => "shirt"]) }}">เสื้อเกราะ</a></li>
                                 <li><a href="{{ route('type', ['type' => "shirt"]) }}">ชุดเวส</a></li>
-                                {{-- <li><a href="/shop">T-shirts</a></li>
-                                <li><a href="/shop">Rompers</a></li>
-                                <li><a href="/shop">Bras &amp; Panties</a></li> --}}
                             </ul>
                             <ul class="single-mega cn-col-5">
                                 <li class="title">กางเกง</li>
@@ -58,19 +51,18 @@
                             </ul>
                         </div>
                     </li>
+                    @if(Session::get('role') != 'admin')
                     <li><a href="/contact">ติดต่อเรา</a></li>
+                    @endif
                     @if(Session::get('role') == 'admin')
                     <li><a href="/manage">จัดการสินค้า</a>
                         <ul class="dropdown">
                                 <li><a href="{{url('/product')}}">เพิ่มสินค้า</a></li>
                                 <li><a href="{{url('/manage')}}">แก้ไขสินค้า</a></li>
                                 <li><a href="{{url('/manage')}}">ลบสินค้า</a></li>
-                                {{-- <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="single-blog.html">Single Blog</a></li>
-                                <li><a href="regular-page.html">Regular Page</a></li>
-                                <li><a href="contact.html">ติดต่อ</a></li> --}}
                         </ul>
+                    </li>
+                    <li><a href="/user">จัดการผู้ใช้</a>
                     </li>
                     @endif
                 </ul>
@@ -111,7 +103,11 @@
         </div>
         <!-- Cart Area -->
         <div class="cart-area">
-            <a href="#" id="essenceCartBtn"><img src="{{asset('img/core-img/bag.svg')}}" alt=""> <span></span></a>
+            @if(Session::get('user'))
+        <a href="/cart" ><img src="{{asset('img/core-img/bag.svg')}}" alt=""> <span>{{(Session::get('count'))}}</span></a>
+            @else
+            <a href="/cart" ><img src="{{asset('img/core-img/bag.svg')}}" alt=""> <span></span></a>
+            @endif
         </div>
     </div>
   

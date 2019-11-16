@@ -28,6 +28,12 @@
 <script src="{{asset('js/classy-nav.min.js')}}"></script>
 <!-- Active js -->
 <script src="{{asset('js/active.js')}}"></script>
+<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<script src="{{asset('js/adminlte.js')}}"></script>
+<script src="{{asset('js/demo.js')}}"></script>
 
 </html>
 

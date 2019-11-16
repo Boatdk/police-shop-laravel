@@ -35,70 +35,18 @@
                                 <!-- Single Item -->
                                 <li data-toggle="collapse" data-target="#clothing">
                                     <a href="{{ route('type', ['type' => "shirt"]) }}">เสื้อ เสื้อเกราะ</a>
-                                    {{-- <ul class="sub-menu collapse show" id="clothing">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
-                                    </ul> --}}
                                 </li>
                                 <!-- Single Item -->
                                 <li data-toggle="collapse" data-target="#shoes" class="collapsed">
                                     <a href="{{ route('type', ['type' => "pants"]) }}">กางเกง</a>
-                                    {{-- <ul class="sub-menu collapse" id="shoes">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
-                                    </ul> --}}
                                 </li>
                                 <!-- Single Item -->
                                 <li data-toggle="collapse" data-target="#shoes" class="collapsed">
                                     <a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้า</a>
-                                    {{-- <ul class="sub-menu collapse" id="accessories">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
-                                    </ul> --}}
                                 </li>
                                 <li data-toggle="collapse" data-target="#accessories" class="collapsed">
                                         <a href="{{ route('type', ['type' => "accessories"]) }}">กระเป๋า</a>
-                                        {{-- <ul class="sub-menu collapse" id="accessories">
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Bodysuits</a></li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                            <li><a href="#">Jeans</a></li>
-                                            <li><a href="#">Pants &amp; Leggings</a></li>
-                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                            <li><a href="#">Shirts &amp; Blouses</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Sweaters &amp; Knits</a></li>
-                                        </ul> --}}
-                                    </li>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -188,73 +136,72 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
-
                         <!-- Single Product -->
-                        @foreach($product as $products)
-                        <div class="col-12 col-sm-6 col-lg-4">
-                            <div class="single-product-wrapper">
-                                <!-- Product Image -->
-                                <div class="product-img">
-                                    <img src="{{$products->image}}" alt="" width="1000px" height="1063px">
-                                    <!-- Hover Thumb -->
-                                    <img class="hover-img" src="" alt="">
-
-                                    <!-- Product Badge -->
-                                    {{-- <div class="product-badge offer-badge">
-                                        <span>-30%</span>
-                                    </div> --}}
-                                    <!-- Favourite -->
-                                    <div class="product-favourite">
-                                        <a href="#" class="favme fa fa-heart"></a>
+                            @foreach($product as $products)
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-wrapper">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{$products->image}}" alt="" width="1000px" height="1063px">
+                                        <!-- Hover Thumb -->
+                                        <img class="hover-img" src="" alt="">
+    
+                                        <!-- Product Badge -->
+                                        {{-- <div class="product-badge offer-badge">
+                                            <span>-30%</span>
+                                        </div> --}}
+                                        <!-- Favourite -->
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <!-- Product Description -->
-                                <div class="product-description">
-                                    @if($products->type == 1)
-                                        <span>เสื้อ</span>
-                                    @elseif($products->type == 2)
-                                        <span>กางเกง</span>
-                                    @elseif($products->type == 3)
-                                        <span>รองเท้า</span>
-                                    @endif
-
-                                    <a href="{{ route('name', ['name' => $products->code]) }}">
-                                            <h6>{{ $products->name }}</h6>
-                                    </a>
-                                    
-                                    <p class="product-price">{{ $products->price }} บาท</p>
-
-                                    @if($products->color == 1)
-                                        <span>ดำ</span>
-                                    @elseif($products->color == 2)
-                                        <span>กรม</span>
-                                    @elseif($products->color == 3)
-                                        <span>ทราย</span>
-                                    @elseif($products->color == 4)
-                                        <span>เขียว</span>
-                                    @elseif($products->color == 5)
-                                        <span>เทา</span>
-                                    @endif
-
-                                    <!-- Hover Content -->
-                                    <div class="hover-content">
-                                        <!-- Add to Cart -->
-                                        <div class="add-to-cart-btn">
-                                            <a href="#" class="btn essence-btn">หยิบใส่ตระกร้า</a>
+    
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        @if($products->type == 1)
+                                            <span>เสื้อ</span>
+                                        @elseif($products->type == 2)
+                                            <span>กางเกง</span>
+                                        @elseif($products->type == 3)
+                                            <span>รองเท้า</span>
+                                        @endif
+    
+                                        <a href="{{ route('name', ['name' => $products->code]) }}">
+                                                <h6>{{ $products->name }}</h6>
+                                        </a>
+                                        
+                                        <p class="product-price">{{ $products->price }} ฿</p>
+    
+                                        @if($products->color == 1)
+                                            <span>ดำ</span>
+                                        @elseif($products->color == 2)
+                                            <span>กรม</span>
+                                        @elseif($products->color == 3)
+                                            <span>ทราย</span>
+                                        @elseif($products->color == 4)
+                                            <span>เขียว</span>
+                                        @elseif($products->color == 5)
+                                            <span>เทา</span>
+                                        @endif
+    
+                                        <!-- Hover Content -->
+                                        <div class="hover-content">
+                                            <!-- Add to Cart -->
+                                            <div class="add-to-cart-btn">
+                                                <button href="#" class="btn essence-btn" onclick="addCart('{{$products->code}}');">หยิบใส่ตระกร้า</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                            @endforeach
+                        
 
                         <!-- Single Product -->
                         
                 <!-- Pagination -->
-                {{-- <nav aria-label="navigation">
+                 {{-- <nav aria-label="navigation">
                     <ul class="pagination mt-50 mb-70">
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -269,4 +216,55 @@
         </div>
     </div>
 </section>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- นำเข้า  Javascript  จาก   dataTables -->
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#product_all').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+        });
+    });
+
+</script>
+<script>
+
+    // function alert(item){
+    //     alert(item)
+    //     console.log(item)
+    // }
+
+    function addCart(itemCode){
+        var customerId = '<?= Session::get('id') ?>'
+        if(customerId) {
+            $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: 'http://localhost:8000/addCart/',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                itemCode: itemCode,
+                customerId: customerId,
+            },
+            success: function(data, dataType, state){
+                console.log(data)
+                if(data.status == 1){
+                    alert('เพิ่มลงตระกร้าเรียบร้อย')
+                    window.location.href = ''
+                }else{
+                    alert('จำนวนสินค้าไม่เพียงพอ')
+                }
+            }
+        })
+        }else{
+            alert('กรุณาล็อคอินเพื่อเพิ่มสินค้าในตระกร้า')
+        }
+
+    }
+</script>
 @stop

@@ -11,5 +11,6 @@
 <link rel="icon" href="{{asset('img/shop-img/logo-web.png')}}">
 
 <!-- Core Style CSS -->
-<link rel="stylesheet" href="{{ asset('css/core-style.css')}}">
-<link rel="stylesheet" href="{{asset('style.css')}}">
+<link rel="stylesheet" href="{{asset('css/core-style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('style.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap4.min.css')}}">

@@ -14,7 +14,7 @@ class manageController extends BaseController
 {
     public function index(){
       $product = Product::getproductData();
-      return view('pages.product_all')->with('product', $product);
+      return view('pages.product_list')->with('product', $product);
     }
 
 

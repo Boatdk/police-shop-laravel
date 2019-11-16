@@ -23,6 +23,9 @@ Route::get('/contact', 'contactController@index');
 Route::get('/manage', 'manageController@index');
 Route::get('/err', 'errController@index');
 Route::get('/getData/{data}', 'productDetailController@getData');
+Route::get('/user', 'userController@index');
+Route::get('/user/{data}', 'userController@getUser');
+Route::get('/cart', 'cartController@index');
 
 
 Route::post('/login', 'loginController@login');
@@ -32,3 +35,9 @@ Route::get('/register', 'registerController@index');
 Route::post('/register', 'registerController@register');
 Route::post('/deleteProduct', 'productController@deleteProduct');
 Route::post('/editProduct', 'productController@editProduct');
+Route::post('/editUser', 'userController@updateUser');
+Route::post('/deleteUser', 'userController@deleteUser');
+Route::post('/addCart', 'cartController@addCart');
+Route::post('/incCart', 'cartController@incCart');
+Route::post('/decCart', 'cartController@decCart');
+

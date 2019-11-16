@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model {
   public static function getproductData(){
-    $query = DB::table('products')->get();
+    $query = DB::table('products')->orderBy('product_id', 'desc')->get();
     return $query;
   }
 

@@ -5,6 +5,7 @@
     <div class="wrapper fadeInDown">
             <div id="formContent">
               <div class="fadeIn first">
+                <label style="margin-top: 10px"><i class="fa fa-user fa-3x"></i></label>
                 <h4>สมัครสมาชิก</h4>
               </div>
               <!-- Login Form -->
@@ -15,7 +16,8 @@
                 <input type="text" id="login" class="fadeIn third" name="tel" placeholder="เบอร์โทรศัพท์" required>
                 <input type="text" id="login" class="fadeIn third" name="email" placeholder="อีเมลล์" required>
                 <input type="password" id="password" class="fadeIn second" name="password" placeholder="รหัสผ่าน" required>
-                
+                <input type="text" id="login" class="fadeIn third" name="line_id" placeholder="ไลน์ไอดี" required>
+                <input type="text" id="login" class="fadeIn third" name="facebook" placeholder="เฟสบุค" required>
                 <input type="submit" class="fadeIn fourth" value="สมัครสมาชิก">
               </form>
             </div>

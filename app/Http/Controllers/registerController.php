@@ -35,6 +35,8 @@ class registerController extends BaseController
       $tel = $req->input('tel');
       $email = $req->input('email');
       $password = $req->input('password');
+      $line_id = $req->input('line_id');
+      $facebook = $req->input('facebook');
       $address = 'default';
       $role = 'customer';
       $user_code = $this->generate_code();
@@ -58,9 +60,10 @@ class registerController extends BaseController
           'tel' => $tel,
           'email' => $email,
           'password' => md5($password),
-          'plain_password' => $password,
           'role' => $role,
-          'address' => $address
+          'address' => $address,
+          'facebook' => $facebook,
+          'line_id' => $line_id
         ]);
       }
       if($register == 1){
