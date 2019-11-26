@@ -47,6 +47,9 @@
                                 <li data-toggle="collapse" data-target="#accessories" class="collapsed">
                                         <a href="{{ route('type', ['type' => "accessories"]) }}">กระเป๋า</a>
                                 </li>
+                                <li data-toggle="collapse" data-target="#glove" class="collapsed">
+                                    <a href="{{ route('type', ['type' => "glove"]) }}">ถุงมือ</a>
+                            </li>
                             </ul>
                         </div>
                     </div>

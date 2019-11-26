@@ -4,6 +4,7 @@
 @include('includes.cart')
 
 <section class="content">
+    <h2><center><i class="fa fa-shopping-cart" style="color:red"></i> <b> ตระกร้าสินค้า</b></center></h2>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -26,7 +27,7 @@
                                     <td><img src="{{$products[0]->image}}" alt="" width="50px" height="20px"></td>
                                     <td><b>{{$cart[$key]->product_code}}</b></td>
                                     <td>{{$products[0]->name}}</td>
-                                    <td><button class="btn m-3" onclick="decCart('{{$products[0]->code}}')"><i class="fa fa-minus-circle" style="color:red"></i></button>{{$cart[$key]->qty}}<button class="btn m-3" onclick="incCart('{{$products[0]->code}}')"><i class="fa fa-plus-circle"style="color:green"></i></button></td>
+                                    <td><button class="btn" onclick="delCart('{{$products[0]->code}}')"><i class="fa fa-trash"></i></button><button class="btn m-3" onclick="decCart('{{$products[0]->code}}')"><i class="fa fa-minus-circle" style="color:red"></i></button>{{$cart[$key]->qty}}<button class="btn m-3" onclick="incCart('{{$products[0]->code}}')"><i class="fa fa-plus-circle"style="color:green"></i></button></td>
                                     <td>{{$cart[$key]->price}} ฿</td>
                                 </tr>
                                   @endforeach                                 
@@ -87,6 +88,28 @@
                 window.location.href = ''
               }
             }
+    })
+  }
+
+  function delCart(itemCode) {
+    var customerId = '<?= Session::get('id') ?>'
+    $.ajax({
+      type: 'post',
+      dataType: 'json',
+      url: 'http://localhost:8000/delCart',
+      data: {
+        "_token": "{{ csrf_token() }}",
+        itemCode: itemCode,
+        customerId: customerId,
+      },
+      success: function(data, dataType, state){
+        if(data.status == 1){
+          alert('ลบสินค้าจากตระกร้าเรียบร้อย')
+          window.location.href = ''
+        }else{
+          alert('กรุณาติดต่อแอดมิน')
+        }
+      }
     })
   }
 </script>

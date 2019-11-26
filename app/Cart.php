@@ -5,9 +5,10 @@ use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model {
-  public static function addCart($itemCode, $customerId, $itemPrice){
+  public static function addCart($itemCode, $customerId, $itemPrice, $orderId){
     $query = DB::table('cart')->insert([
       'user_code' => $customerId,
+      'order_id' => $orderId,
       'product_code' => $itemCode,
       'qty' => 1,
       'price' => $itemPrice,

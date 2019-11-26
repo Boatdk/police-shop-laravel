@@ -9,9 +9,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use DB;
 use App\Product;
+use App\Cart;
 
 class shopController extends BaseController{
   public function index(Request $req){
+    $customerId = $req->session()->get('id');
+    $count = Cart::countCart($customerId);
+    $req->session()->put('count', $count);
     $check = $req->session()->get('user');
     $url = url()->full();
     $type = substr($url, 27);
@@ -55,6 +59,9 @@ class shopController extends BaseController{
       $filter = 11;
       $bfilter = $type;
       $msg = $type;
+    }elseif($type === 'glove'){
+      $filter = 12;
+      $msg = 'ถุงมือ'; 
     }else{
       $filter = 0;
       $msg = 'สินค้าทั้งหมด';
@@ -79,6 +86,9 @@ class shopController extends BaseController{
     }elseif($filter == 5 || $filter == 6 || $filter == 7 || $filter == 8 || $filter == 9  || $filter == 10 || $filter == 11){
       $product = Product::getProductBrand($bfilter);
       $count = Product::getproductBrand($bfilter)->count();
+    }elseif($filter == 12){
+      $product = Product::getproductType($filter);
+      $count = Product::getproductType($filter)->count();
     }
     
     // print_r($product[0]->name);exit;

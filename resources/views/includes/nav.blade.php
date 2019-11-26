@@ -46,8 +46,9 @@
                             </ul>
                             <ul class="single-mega cn-col-5">
                                 <li class="title">กระเป๋า</li>
-                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">เป้หลัง</a></li>
+                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">อุปกรณ์</a></li>
                                 <li><a href="{{ route('type', ['type' => "accessories"]) }}">สะพายไหล่ คาดเอว รัด หิ้ว</a></li>
+                                <li><a href="{{ route('type', ['type' => "glove"]) }}">ถุงมือ</a></li>
                             </ul>
                         </div>
                     </li>
@@ -84,7 +85,7 @@
         <div class="favourite-area">
             {{-- <a href="#"><img src="{{asset('img/core-img/heart.svg')}}" alt=""></a> --}}
             @if(Session::get('user'))
-            <a>{{ Session::get('firstname')}}</a>
+             <a> <i class="fa fa-user" style="color:green"></i> {{ Session::get('firstname')}}</a>
             @else
             
             <a href="/login"><img src="{{asset('img/core-img/user.svg')}}" alt=""></a>

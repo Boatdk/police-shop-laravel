@@ -10,14 +10,13 @@ use Illuminate\Http\Request;
 use DB;
 use App\Cart;
 use App\Product;
+use App\Order;
 
 class cartController extends BaseController{
   public function index(Request $req){
     $check = $req->session()->get('user');
     $customerId = $req->session()->get('id');
     $cart = Cart::getCart($customerId);
-    $count = Cart::countCart($customerId);
-    $req->session()->put('count', $count);
     $sum = Cart::sumCart($customerId);
     $product= array();
     foreach($cart as $carts){
@@ -33,16 +32,35 @@ class cartController extends BaseController{
     $checkStock = Product::getProductFromCode($itemCode);
     $checkCart = Cart::getCartValid($itemCode, $customerId);
     $success['status'] = 0;
-    if($checkStock[0]->volume > 0){
-      if(!empty($checkCart)){
-        $add = Cart::addCart($itemCode, $customerId, $checkStock[0]->price);
-      }else if($checkCart[0]->qty > 0){
-        $add = Cart::incCart($itemCode, $customerId, $checkCart[0]->qty, $checkStock[0]->price, $checkCart[0]->price);
-      }
-      $success['status'] = 1;
+    $getOrderId = Order::getOrderFromUserId($customerId);
+    $i = 0;
+    if(count($getOrderId) == 0){
+      $openOrder = Order::addOrder($customerId);
     }else{
-      $success['status'] = 0;
+      while($i < count($getOrderId)){
+        if($getOrderId[$i]->status == 0){
+          $orderId = $getOrderId[$i]->order_id;
+          $checkOrder = 0;
+        }else{
+          $checkOrder = 1;
+        }
+        $i++;
+      }
+      if($checkOrder == 0){
+        if($checkStock[0]->volume > 0){
+          if(count($checkCart) == 0){
+            $add = Cart::addCart($itemCode, $customerId, $checkStock[0]->price, $orderId);
+          }else if($checkCart[0]->qty > 0){
+            $add = Cart::incCart($itemCode, $customerId, $checkCart[0]->qty, $checkStock[0]->price, $checkCart[0]->price);
+          }
+          $success['status'] = 1;
+        }else{
+          $success['status'] = 0;
+        }
+      }
     }
+    
+    
     return $success;
   }
 
@@ -74,6 +92,19 @@ class cartController extends BaseController{
       $dec = Cart::decCart($itemCode, $customerId, $checkCart[0]->qty, $checkStock[0]->price, $checkCart[0]->price);
       $success['status'] = 1;
     }else{
+      $delete = Cart::deleteCart($itemCode, $customerId);
+      $success['status'] = 1;
+    }
+
+    return $success;
+  }
+
+  public function delCart(Request $req){
+    $itemCode = $_REQUEST['itemCode'];
+    $customerId = $_REQUEST['customerId'];
+    $checkCart = Cart::getCartValid($itemCode, $customerId);
+    $success['status'] = 0;
+    if($checkCart && $checkCart[0]->qty != 0){
       $delete = Cart::deleteCart($itemCode, $customerId);
       $success['status'] = 1;
     }

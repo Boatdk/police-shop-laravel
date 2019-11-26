@@ -40,4 +40,5 @@ Route::post('/deleteUser', 'userController@deleteUser');
 Route::post('/addCart', 'cartController@addCart');
 Route::post('/incCart', 'cartController@incCart');
 Route::post('/decCart', 'cartController@decCart');
+Route::post('/delCart', 'cartController@delCart');
 

@@ -45,6 +45,7 @@ class productController extends BaseController
       $size = $req->input('product_size');
       $volume = $req->input('product_volume');
       $price = $req->input('product_price');
+      $description = $req->input('product_description');
       $image = 'http://localhost:8888/police-shop/police-shop/public/images/'.$imageName;
       $product_code = $this->createRandomCode($name);
       $addProduct = DB::table('products')->insert([
@@ -56,12 +57,13 @@ class productController extends BaseController
         'volume' => $volume,
         'price' => $price,
         'image' => $image,
-        'code' => $product_code
+        'code' => $product_code,
+        'description' => $description
       ]);
       if($addProduct == 1){
         return redirect()->action('productController@index');
       }else{
-        return '<script>alert("FAIL");</script>';
+        return '<script>alert("ไม่สามารถเพิ่มสินค้าได้");</script>';
       }
     }
 

@@ -261,10 +261,11 @@ img {
   .header_area .classy-navbar,
   .header_area .header-meta {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    min-width: 50%;
-    width: 50%; }
+    /* -ms-flex: 0 0 50%; */
+    /* flex: 0 0 50%; */
+    min-width: auto;
+    /* width: 50%;  */
+  }
     @media only screen and (max-width: 767px) {
       .header_area .classy-navbar,
       .header_area .header-meta {
@@ -1056,7 +1057,8 @@ img {
   position: relative;
   z-index: 1;
   background-color: #252525;
-  padding: 70px 0 60px; }
+  padding: 70px 0 60px; 
+  }
   .footer_area .single_widget_area .footer_menu ul {
     display: -webkit-box;
     display: -ms-flexbox;

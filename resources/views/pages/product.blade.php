@@ -17,6 +17,12 @@
                         <input type="text" name="product_name" class="form-control" required>
                     </div>
                 </div>
+                <div class="col-md-12">
+                        <div class="form-group">
+                            <label>คำบรรยายสินค้า</label>
+                            <textarea type="text" name="product_description" class="form-control" required></textarea>
+                        </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <div>
@@ -28,6 +34,7 @@
                             <option value="2">กางเกง</option>
                             <option value="3">รองเท้า</option>
                             <option value="4">กระเป๋า</option>
+                            <option value="12">ถุงมือ</option>
                         </select>
                     </div>
                 </div>

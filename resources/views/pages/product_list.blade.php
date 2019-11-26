@@ -34,6 +34,8 @@
                         <td>รองเท้า</td>
                         @elseif($products->type == 4)
                         <td>กระเป๋า</td>
+                        @elseif($products->type == 12)
+                        <td>ถุงมือ</td>
                         @endif
 
                         @if($products->color == 1)
