@@ -66,7 +66,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    แก้ไขข้อมูลลูกค้า
+                    ดูข้อมูลลูกค้า
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -170,7 +170,12 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">บทบาท</label>
-                                <input type="text" class="form-control" name="role">
+                                <select name="role" id="role">
+                                        <option value="0">บทบาท</option>
+                                        <option value="admin">ผู้ดูแลสูงสุด</option>
+                                        <option value="customer">ลูกค้า</option>
+                                        <option value="moder">ผู้ดูแล</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -200,13 +205,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><i class="fab fa-line"></i> ไลน์ไอดี</label>
-                                <input type="text" class="form-control" name="line_id">
+                                <input type="text" class="form-control" name="line_id2">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><i class="fab fa-line"></i> เฟสบุค</label>
-                                <input type="text" class="form-control" name="facebook">
+                                <input type="text" class="form-control" name="facebook2">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -255,7 +260,6 @@
         $.ajax({
             url: 'http://localhost:8000/user/' + code,
             success: function (data) {
-                console.log(data)
                 $('input[name="user_code"]').val(data[0].user_code);
                 $('input[name="firstname"]').val(data[0].first_name);
                 $('input[name="lastname"]').val(data[0].last_name);
@@ -276,11 +280,12 @@
             var last_name = $('input[name="lastname"]').val();
             var tel = $('input[name="tel"]').val();
             var email = $('input[name="email"]').val();
-            var line_id = $('input[name="line_id"]').val();
-            var facebook = $('input[name="facebook"]').val();
+            var line_id = $('input[name="line_id2"]').val();
+            var facebook = $('input[name="facebook2"]').val();
             var address = $('textarea[name="address"]').val();
-            var role = $('input[name="role"]').val();
-            console.log()
+            var role = $('select[name="role"]').val();
+            console.log("role ---> " + role)
+            console.log("line_id --> " + line_id)
             $.ajax({
                 type: 'post',
                 dataType: 'json',

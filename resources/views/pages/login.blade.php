@@ -28,13 +28,12 @@
             </div>
           </div>
 </div>
-
 <style>
 
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #252525;
 }
 
 body {
@@ -324,4 +323,5 @@ input[type=password]:placeholder {
 }
 
 </style>
+
 @stop

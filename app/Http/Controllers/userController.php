@@ -35,7 +35,6 @@ class userController extends BaseController
       $line_id = $_REQUEST['line_id'];
       $facebook = $_REQUEST['facebook'];
       $role = $_REQUEST['role'];
-    
       $update = Users::updateUser($user_code, $first_name, $last_name, $address, $tel, $email, $line_id, $facebook, $role);
       return $update;
 

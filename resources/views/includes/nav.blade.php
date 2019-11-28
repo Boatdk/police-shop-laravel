@@ -45,8 +45,8 @@
                                 <li><a href="{{ route('type', ['type' => "shoes"]) }}">รองเท้า 5.11</a></li>
                             </ul>
                             <ul class="single-mega cn-col-5">
-                                <li class="title">กระเป๋า</li>
-                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">อุปกรณ์</a></li>
+                                <li class="title">อุปกรณ์</li>
+                                <li><a href="{{ route('type', ['type' => "accessories"]) }}">กระเป๋า</a></li>
                                 <li><a href="{{ route('type', ['type' => "accessories"]) }}">สะพายไหล่ คาดเอว รัด หิ้ว</a></li>
                                 <li><a href="{{ route('type', ['type' => "glove"]) }}">ถุงมือ</a></li>
                             </ul>
@@ -97,7 +97,7 @@
                 {{-- <li><a href="/login"><img src="{{asset('img/core-img/user.svg')}}" alt=""></a></li> --}}
                 @if(Session::get('user'))
                 <div>
-                        <a href="/logout" style="color:red">logout</a>
+                        <a href="/logout" style="color:red"><i class="fa fa-sign-out"></i> logout</a>
                 </div>
                 
                 @endif
