@@ -66,7 +66,7 @@
                 <div class="card-footer text-muted">
                     แจ้งสลิปโดยการส่งหลักฐานการโอนเงินให้ทางไลน์
                 </div>
-                <a href="#" class="btn btn-primary">คลิกเพื่อไปยังไลน์</a>
+                <a href="/orderlist_all" class="btn btn-primary">กลับไปหน้ารายการสั่งซื้อทั้งหมด</a>
             </div>
         </center>
     </div>

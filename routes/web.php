@@ -27,6 +27,8 @@ Route::get('/user', 'userController@index');
 Route::get('/user/{data}', 'userController@getUser');
 Route::get('/cart', 'cartController@index');
 Route::get('/orderlist', 'orderController@index');
+Route::get('/orderlist_all', 'orderController@orderListAll');
+Route::get('/order/{data}', 'orderController@orderDetail');
 
 
 Route::post('/login', 'loginController@login');
@@ -43,4 +45,6 @@ Route::post('/incCart', 'cartController@incCart');
 Route::post('/decCart', 'cartController@decCart');
 Route::post('/delCart', 'cartController@delCart');
 Route::post('/payment', 'orderController@summaryOrder');
+Route::post('/paysuccess', 'orderController@paymentSuccess');
+Route::post('/payfail', 'orderController@paymentFail');
 

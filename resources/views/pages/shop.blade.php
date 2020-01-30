@@ -146,7 +146,7 @@
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <img src="{{$products->image}}" alt="" width="1000px" height="1063px">
+                                        <img src="{{$products->image}}" alt="" width="50" height="50">
                                         <!-- Hover Thumb -->
                                         <img class="hover-img" src="" alt="">
     

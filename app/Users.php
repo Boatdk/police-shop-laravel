@@ -31,4 +31,9 @@ class Users extends Model {
     return $query;
   }
 
+  public static function getNameFromUser($code){
+    $query = DB::table('user')->where('user_code', $code)->get();
+    return $query;
+  }
+
 }

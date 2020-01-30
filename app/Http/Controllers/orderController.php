@@ -45,7 +45,50 @@ class orderController extends BaseController{
     return $data;
   }
 
-  public function successPayment(){
-    
+  public function orderListAll(){
+    $getAllOrder = Order::getAllOrder();
+    $user = array();
+    $cart = array();
+    $product = array();
+    foreach($getAllOrder as $order){
+      $users = $order->user_code;
+      $find_name = Users::getNameFromUser($users);
+      $add_user = array_push($user, $find_name);
+      $item = Cart::getCartOrderId($order->order_id);
+      $add_item = array_push($cart, $item);
+      foreach($item as $items){
+        $itemCode = $items->product_code;
+        $add = array_push($product, Product::getProductFromCode($itemCode));
+      }
+    }
+    return view('pages.orderlist')->with('orderlist', $getAllOrder)->with('user', $user)->with('product', $product)->with('cart', $cart);
+  }
+
+  public function orderDetail(Request $req){
+    $url = url()->full();
+    $type = substr($url, 28);
+    $orderId = $type;
+    $item = Cart::getCartOrderId($orderId);
+    $getOrder = Order::getOrderId($orderId);
+    $product= array();
+    foreach($item as $items){
+      $itemCode = $items->product_code;
+      $add = array_push($product, Product::getProductFromCode($itemCode));
+    }
+    return view('pages.order_detail')->with('item', $item)->with('order', $getOrder)->with('product', $product);
+  }
+
+  public function paymentSuccess(Request $req){
+    $orderId = $_REQUEST['orderId'];
+    $updateStatus = Order::updateStatusSuccess($orderId);
+    $data = 1;
+    return $data;
+  }
+
+  public function paymentFail(Request $req){
+    $orderId = $_REQUEST['orderId'];
+    $updateStatus = Order::updateStatusCancle($orderId);
+    $data = 1;
+    return $data;
   }
 }

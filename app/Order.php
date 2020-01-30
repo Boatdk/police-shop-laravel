@@ -34,8 +34,28 @@ class Order extends Model {
     return $query;
   }
 
+  public static function updateStatusSuccess($orderId){
+    $query = DB::table('order_list')->where('order_id', $orderId)->update(['status' => 2]);
+    return $query;
+  }
+
+  public static function updateStatusCancle($orderId){
+    $query = DB::table('order_list')->where('order_id', $orderId)->update(['status' => 3]);
+    return $query;
+  }
+
   public static function getOrderUserId($user_code){
     $query = DB::table('order_list')->where('user_code', $user_code)->where('status', "!=", 0)->orderBy('create_date', 'desc')->get();
+    return $query;
+  }
+
+  public static function getOrderId($orderId){
+    $query = DB::table('order_list')->where('order_id', $orderId)->get();
+    return $query;
+  }
+
+  public static function getAllOrder(){
+    $query = DB::table('order_list')->orderBy('create_date', 'desc')->get();
     return $query;
   }
 
