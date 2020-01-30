@@ -17,13 +17,17 @@ class Cart extends Model {
     return $query;
   }
 
+  public static function newCart($customerId){
+    
+  }
+
   public static function getCart($customerId){
-    $query = DB::table('cart')->where('user_code', $customerId)->get();
+    $query = DB::table('cart')->where('user_code', $customerId)->where('status', 0)->get();
     return $query;
   }
 
   public static function getCartValid($itemCode, $customerId){
-    $query = DB::table('cart')->where('user_code', $customerId)->where('product_code', $itemCode)->get();
+    $query = DB::table('cart')->where('user_code', $customerId)->where('product_code', $itemCode)->where('status', 0)->get();
     return $query;
   }
 
@@ -43,12 +47,27 @@ class Cart extends Model {
   }
 
   public static function countCart($customerId){
-    $query = DB::table('cart')->where('user_code', $customerId)->count();
+    $query = DB::table('cart')->where('user_code', $customerId)->where('status', 0)->count();
     return $query;
   }
 
   public static function sumCart($customerId){
-    $query = DB::table('cart')->where('user_code', $customerId)->sum('price');
+    $query = DB::table('cart')->where('user_code', $customerId)->where('status', 0)->sum('price');
+    return $query;
+  }
+
+  public static function getCartOrderId($orderId){
+    $query = DB::table('cart')->where('order_id', $orderId)->get();
+    return $query;
+  }
+
+  public static function sumCartOrderId($orderId){
+    $query = DB::table('cart')->where('order_id', $orderId)->sum('price');
+    return $query;
+  }
+
+  public static function clearCart($orderId){
+    $query = DB::table('cart')->where('order_id', $orderId)->update(['status' => 1]);
     return $query;
   }
 

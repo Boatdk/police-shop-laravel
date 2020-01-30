@@ -11,6 +11,7 @@ use DB;
 use App\Cart;
 use App\Product;
 use App\Order;
+use App\Users;
 
 class cartController extends BaseController{
   public function index(Request $req){
@@ -19,9 +20,13 @@ class cartController extends BaseController{
     $cart = Cart::getCart($customerId);
     $sum = Cart::sumCart($customerId);
     $product= array();
-    foreach($cart as $carts){
-      $itemCode = $carts->product_code;
-      $add = array_push($product, Product::getProductFromCode($itemCode));
+    if(count($cart) == 0){
+      $add = array_push($product, 'empty');
+    }else{
+      foreach($cart as $carts){
+        $itemCode = $carts->product_code;
+        $add = array_push($product, Product::getProductFromCode($itemCode));
+      } 
     }
     return view('pages.cart')->with('cart', $cart)->with('product', $product)->with('sum', $sum);
   }
@@ -34,8 +39,12 @@ class cartController extends BaseController{
     $success['status'] = 0;
     $getOrderId = Order::getOrderFromUserId($customerId);
     $i = 0;
-    if(count($getOrderId) == 0){
+    if(count($getOrderId) == 0 && count($checkCart) == 0){
       $openOrder = Order::addOrder($customerId);
+      $getOrderId = Order::getOrderFromUserId($customerId);
+      $orderId = $getOrderId[$i]->order_id;
+      $addCart = Cart::addCart($itemCode, $customerId, $checkStock[0]->price, $orderId);
+      $success['status'] = 1;
     }else{
       while($i < count($getOrderId)){
         if($getOrderId[$i]->status == 0){

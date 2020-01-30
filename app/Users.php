@@ -26,4 +26,9 @@ class Users extends Model {
     return $query;
   }
 
+  public static function getUserFromEmail($email){
+    $query = DB::table('user')->where('email', $email)->get();
+    return $query;
+  }
+
 }

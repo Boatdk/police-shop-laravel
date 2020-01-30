@@ -1,0 +1,61 @@
+@extends('layouts.default')
+@section('content')
+
+@include('includes.cart')
+
+<section class="content">
+    <div class="mb-5 mt-5">
+      <center>
+          <div class="card" style="width: 650px;">
+              <div class="card-header">
+                  ใบคำสั่งซื้อ
+                </div>
+              <div class="card-body">
+                  <h5 class="card-title">เลขที่คำสั่งซื้อ {{$order[0]->order_id}}</h5>
+                  @if($order[0]->status == 1)
+                    <p>สถานะคำสั่งซื้อ: <span class="badge badge-warning" style="font-size: 15px">รอลูกค้าโอนเงิน</span></p>
+                  @elseif($order[0]->status == 2)
+                    <p>สถานะคำสั่งซื้อ: <span class="badge badge-success" style="font-size: 15px">ลูกค้าโอนเงินสำเร็จ</span></p>
+                  @endif
+                  <div class="row">
+                      <div class="col-4">
+                          <strong>สินค้า</strong>
+                      </div>
+                      <div class="col-4 text-right">
+                          <strong>จำนวน</strong>
+                      </div>
+                      <div class="col-4">
+                          <strong>ราคา</strong>
+                      </div>
+  
+                      @foreach($product as $key => $products)
+                      <div class="col-4 text-left">
+                          {{$products[0]->name}}
+                      </div>
+                      <div class="col-4 text-right">
+                          {{$item[$key]->qty}}
+                      </div>
+                      <div class="col-4">
+                          {{number_format($item[$key]->price, 2)}} ฿
+                      </div>
+                      @endforeach
+                      <div class="col-8 text-left">
+                        <h5>ราคารวมทั้งหมด</h5>
+                      </div>
+                      <div class="col-4">
+                        <h5>{{number_format($order[0]->total_price, 2)}} ฿</h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer text-muted">
+                  แจ้งสลิปโดยการส่งหลักฐานการโอนเงินให้ทางไลน์
+              </div>
+              <a href="#" class="btn btn-primary">คลิกเพื่อไปยังไลน์</a>
+          </div>
+      </center>
+    </div>
+</section>
+<script>
+
+</script>
+@stop

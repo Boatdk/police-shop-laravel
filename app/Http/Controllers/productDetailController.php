@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use DB;
 use App\Product;
+use App\Cart;
 
 class productDetailController extends BaseController{
   public function index(Request $req, $product_name){
@@ -16,6 +17,9 @@ class productDetailController extends BaseController{
     $url = url()->full();
     $type = substr($url, 30);
     $code_product = $type;
+    $customerId = $req->session()->get('id');
+    $count = Cart::countCart($customerId);
+    $req->session()->put('count', $count);
     $product = Product::getProductFromCode($code_product);
     return view('pages.product_detail')->with('product', $product[0]);
   }

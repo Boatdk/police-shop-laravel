@@ -26,6 +26,7 @@ Route::get('/getData/{data}', 'productDetailController@getData');
 Route::get('/user', 'userController@index');
 Route::get('/user/{data}', 'userController@getUser');
 Route::get('/cart', 'cartController@index');
+Route::get('/orderlist', 'orderController@index');
 
 
 Route::post('/login', 'loginController@login');
@@ -41,4 +42,5 @@ Route::post('/addCart', 'cartController@addCart');
 Route::post('/incCart', 'cartController@incCart');
 Route::post('/decCart', 'cartController@decCart');
 Route::post('/delCart', 'cartController@delCart');
+Route::post('/payment', 'orderController@summaryOrder');
 

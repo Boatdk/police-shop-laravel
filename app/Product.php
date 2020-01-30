@@ -35,6 +35,11 @@ class Product extends Model {
     return $query;
   }
 
+  public static function reserveState($code, $qty){
+    $query = DB::table('products')->where('code', $code)->decrement('volume', $qty);
+    return $query;
+  }
+
 
 
 }

@@ -9,6 +9,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                  @if($product[0] == 'empty')
+                    <div class="text-center">
+                      <h4>กรุณาเลือกสินค้าของท่านที่หน้าร้านค้า</h4>
+                      <a class="btn btn-primary btn-sm" href="http://localhost:8000/shop">ร้านค้า</a>
+                    </div>
+                  @else
                     <div class="table-responsive">
                         <table id="product_table" class="table table-bordered table-hover">
                             <thead class="text-center">
@@ -21,7 +27,6 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center" style="font-size: 12px;">
-                               
                                   @foreach($product as $key => $products)
                                 <tr>
                                     <td><img src="{{$products[0]->image}}" alt="" width="50px" height="20px"></td>
@@ -38,8 +43,10 @@
                                   <td>{{$sum}} ฿</td>
                             </tbody>
                         </table>
+                        <button class="btn btn-success" onclick="payment('{{$cart[0]->order_id}}')">ชำระเงิน</button>
                     </div>
                 </div>
+                @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -109,6 +116,23 @@
         }else{
           alert('กรุณาติดต่อแอดมิน')
         }
+      }
+    })
+  }
+  
+  function payment(orderId){
+    console.log(orderId)
+    $.ajax({
+      type: 'post',
+      dataType: 'json',
+      url: 'http://localhost:8000/payment',
+      data: {
+        "_token": "{{ csrf_token() }}",
+        orderId: orderId
+      },
+      success: function(data, dataType, state){
+        alert('กำลังทำรายการค่ะ')
+        window.location.href = 'http://localhost:8000/orderlist'
       }
     })
   }
