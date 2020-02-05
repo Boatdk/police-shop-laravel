@@ -64,9 +64,26 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    แจ้งสลิปโดยการส่งหลักฐานการโอนเงินให้ทางไลน์
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h6>โอนเงินมาที่บัญชี</h6>
+                                <strong>"นางสาวดำ  ทองดี"</strong>
+                            </div>
+                            <div>
+                                <strong class="text-success">กสิกรไทย</strong> 987-123-908-1
+                            </div>
+                            <div>
+                                <strong class="text-warning">พร้อมเพย์</strong> 097-1234567
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <strong class="text-danger">"แจ้งสลิปโดยการส่งหลักฐานการโอนเงินให้ทางไลน์"</strong>
+                    </div>
+
                 </div>
-                <a href="#" class="btn btn-primary">คลิกเพื่อไปยังไลน์</a>
+                <a href="https://lin.ee/wzn1kSF" class="btn btn-primary">คลิกเพื่อไปยังไลน์</a>
             </div>
         </center>
     </div>
