@@ -3,6 +3,12 @@
 <head>
     @include('includes.head')
 </head>
+<style>
+    .fix{
+        position: fixed;
+        bottom: 0;
+    }
+</style>
 <body>
 
 

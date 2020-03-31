@@ -20,7 +20,7 @@
                             style="font-size: 15px">ลูกค้าโอนเงินสำเร็จ</span></p>
                     @endif
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 text-center">
                             <strong>สินค้า</strong>
                         </div>
                         <div class="col-2 text-right">
@@ -29,8 +29,11 @@
                         <div class="col-2 text-right">
                             <strong>จำนวน</strong>
                         </div>
-                        <div class="col-4">
-                            <strong>ราคา</strong>
+                        <div class="col-2">
+                            <strong>ราคาต่อชิ้น</strong>
+                        </div>
+                        <div class="col-2">
+                            <strong>ราคารวม</strong>
                         </div>
 
                         @foreach($product as $key => $products)
@@ -49,16 +52,19 @@
                         <div class="col-2 text-right">เทา</div>
                         @endif
                         <div class="col-2 text-right">
-                            {{$item[$key]->qty}}
+                            x {{$item[$key]->qty}}
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
+                            {{number_format($products[0]->price)}} ฿
+                        </div>
+                        <div class="col-2">
                             {{number_format($item[$key]->price, 2)}} ฿
                         </div>
                         @endforeach
                         <div class="col-8 text-left">
                             <h5>ราคารวมทั้งหมด</h5>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 text-right">
                             <h5>{{number_format($order[0]->total_price, 2)}} ฿</h5>
                         </div>
                     </div>

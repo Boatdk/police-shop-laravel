@@ -59,4 +59,19 @@ class Order extends Model {
     return $query;
   }
 
+  public static function calOrder($day){
+    $query = DB::table('order_list')->where('status', 2)->where('create_date', 'like', $day)->sum('total_price');
+    return $query;
+  }
+
+  public static function countOrder($status, $day){
+    $query = DB::table('order_list')->where('status', $status)->where('create_date', 'like', $day)->count();
+    return $query;
+  }
+
+  public static function getOrderByDay($day){
+    $query = DB::table('order_list')->where('status', 2)->where('create_date', 'like', $day)->get();
+    return $query;
+  }
+
 }

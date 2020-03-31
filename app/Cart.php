@@ -71,4 +71,14 @@ class Cart extends Model {
     return $query;
   }
 
+  public static function bestSeller(){
+    $query = DB::table('cart')->select('product_code', DB::raw('SUM(qty)'))->where('status', 1)->groupBy('product_code')->orderBy('qty', 'desc')->get();
+    return $query;
+  }
+
+  public static function countQty($productCode){
+    $query = DB::table('cart')->where('product_code', $productCode)->get('qty');
+    return $query;
+  }
+  
 }
