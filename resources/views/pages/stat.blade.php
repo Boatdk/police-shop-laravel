@@ -26,7 +26,7 @@
               </li>
               @endforeach --}}
             <li class="best-seller">
-              <div class="id">
+              <div class="id"> 
                 อันดับ 1
               </div>
               <div class="content p-3">
