@@ -74,4 +74,9 @@ class Order extends Model {
     return $query;
   }
 
+  public static function calOrderPerWeek($start, $end){
+    $query = DB::table('order_list')->where('status', 2)->whereBetween('create_date', [$start, $end])->sum('total_price');
+    return $query;
+  }
+
 }

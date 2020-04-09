@@ -66,6 +66,7 @@
                     <li><a href="/user">จัดการผู้ใช้</a>
                     </li>
                     <li><a href="/orderlist_all">รายการสั่งของ</a></li>
+                    <li><a href="/bestseller">รายงาน</a></li>
                     @endif
                 </ul>
             </div>

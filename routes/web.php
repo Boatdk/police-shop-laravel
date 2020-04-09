@@ -49,4 +49,5 @@ Route::post('/paysuccess', 'orderController@paymentSuccess');
 Route::post('/payfail', 'orderController@paymentFail');
 
 Route::get('/bestseller', 'statController@index');
+Route::get('/statbydate', 'statController@totalByDate');
 
